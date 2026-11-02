@@ -5,7 +5,7 @@ export function RaidNights({ nights }: { nights: RaidNight[] }) {
   return (
     <section id="raids" aria-labelledby="raids-heading" className="flex scroll-mt-6 flex-col gap-6">
       <SectionHeading id="raids-heading" title="Raid nights" hairline />
-      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+      <div className={`grid grid-cols-1 gap-4 ${nights.length === 2 ? 'md:grid-cols-2' : 'md:grid-cols-3'}`}>
         {nights.map((night, index) => (
           <div
             key={`${night.label}-${index}`}

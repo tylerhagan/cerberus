@@ -7,9 +7,8 @@ export const guild = {
   progression: { tier: '', cleared: 0, total: 0 }, // shown only when total > 0
   raidNights: [
     // static fallback when Discord has no events
-    { label: 'Main raid', day: '[Day]', time: '[20:00 to 23:00 CET]' },
-    { label: 'Main raid', day: '[Day]', time: '[20:00 to 23:00 CET]' },
-    { label: 'Alt / social', day: '[Day]', time: 'Optional' },
+    { label: 'Main raid', day: 'Fri', time: 'Time to be announced' },
+    { label: 'Main raid', day: 'Sun', time: 'Time to be announced' },
   ],
   links: {
     logs: 'https://www.warcraftlogs.com/guild/id/764879', // retail guild until WoW: Forever logs exist

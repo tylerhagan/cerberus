@@ -26,7 +26,7 @@ export interface Counts {
 
 export interface SiteData {
   counts: Counts;
-  raidNights: RaidNight[]; // always 3 items; static fallback fills gaps
+  raidNights: RaidNight[]; // Discord events first; static fallback fills gaps
   seats: Seat[]; // may be empty
   posts: Post[]; // 0 to 3
   fetchedAt: string; // ISO, time of this render
