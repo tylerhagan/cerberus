@@ -1,0 +1,212 @@
+@import "tailwindcss";
+
+:root {
+  --ground: #0b0b0d;
+  --ground-warm: #141013;
+  --ember: #2a0f12;
+  --panel: #121114;
+  --panel-2: #0f0e11;
+  --card: #17161a;
+  --line: #2a262b;
+  --line-2: #1f1d21;
+  --nav-top: #1a181c;
+  --nav-bottom: #121114;
+  --blood: #c8102e;
+  --blood-light: #e63950;
+  --blood-dark: #8a0a1e;
+  --bone: #e8e1d3;
+  --text: #efeae0;
+  --text-2: #d6d0c6;
+  --muted: #9a948a;
+  --faint: #807a71;
+}
+
+@theme inline {
+  --color-ground: var(--ground);
+  --color-panel: var(--panel);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-line-2: var(--line-2);
+  --color-blood: var(--blood);
+  --color-blood-light: var(--blood-light);
+  --color-bone: var(--bone);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --font-display: var(--font-cinzel), serif;
+  --font-sans: var(--font-barlow), system-ui, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: normal;
+}
+
+:focus-visible {
+  outline: 2px solid var(--bone);
+  outline-offset: 2px;
+}
+
+.backdrop {
+  background: radial-gradient(
+    ellipse 80% 45% at 50% 0%,
+    var(--ember) 0%,
+    var(--ground-warm) 50%,
+    var(--ground) 100%
+  );
+}
+
+.backdrop-fade {
+  background: linear-gradient(to top, var(--ground) 30%, transparent);
+}
+
+.stone {
+  background-image: url(/art/stone.webp);
+  background-size: 1200px 1200px;
+  background-repeat: repeat;
+}
+
+.nav-bar {
+  background: linear-gradient(180deg, var(--nav-top), var(--nav-bottom));
+}
+
+.crack-lines {
+  animation: crack-pulse 3s ease-in-out infinite;
+}
+
+@keyframes crack-pulse {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  .hound-rise {
+    animation: hound-rise 600ms ease-out both;
+  }
+}
+
+@keyframes hound-rise {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+
+.cta {
+  background: linear-gradient(180deg, var(--blood-light), var(--blood) 60%, var(--blood-dark));
+  transition: transform 150ms ease;
+}
+
+/* clip-path removes box-shadow on the same element, so the hover glow sits on the wrapper */
+.cta-wrap {
+  transition: filter 150ms ease;
+}
+
+.cta-wrap:hover {
+  filter: drop-shadow(0 12px 28px rgba(200, 16, 46, 0.55));
+}
+
+.cta-wrap:hover .cta {
+  transform: translateY(-1px);
+}
+
+.seam {
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--blood) 20%,
+    var(--blood-light) 50%,
+    var(--blood) 80%,
+    transparent
+  );
+}
+
+.hairline {
+  background: linear-gradient(to right, var(--line), transparent);
+}
+
+.glyph-diamond {
+  background: linear-gradient(180deg, var(--blood-light), var(--blood));
+}
+
+.hero-title {
+  font-size: min(72px, calc((100vw - 48px) / 6));
+}
+
+@media (min-width: 768px) {
+  .hero-title {
+    font-size: clamp(72px, 9vw, 124px);
+  }
+}
+
+.hero-glow {
+  background: radial-gradient(ellipse at 50% 100%, rgba(200, 16, 46, 0.35), transparent 70%);
+  filter: blur(24px);
+}
+
+.hero-hound {
+  filter: drop-shadow(0 30px 40px rgba(0, 0, 0, 0.7));
+}
+
+@utility clip-nav {
+  clip-path: polygon(16px 0, 100% 0, 100% calc(100% - 16px), calc(100% - 16px) 100%, 0 100%, 0 16px);
+}
+
+@utility clip-panel {
+  --cut: 16px;
+  clip-path: polygon(
+    var(--cut) 0,
+    calc(100% - var(--cut)) 0,
+    100% var(--cut),
+    100% calc(100% - var(--cut)),
+    calc(100% - var(--cut)) 100%,
+    var(--cut) 100%,
+    0 calc(100% - var(--cut)),
+    0 var(--cut)
+  );
+
+  @media (min-width: 768px) {
+    --cut: 24px;
+  }
+}
+
+@utility clip-cta {
+  clip-path: polygon(12px 0, 100% 0, calc(100% - 12px) 100%, 0 100%);
+}
+
+@utility clip-card {
+  clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 0 100%);
+}
+
+@utility clip-diamond {
+  clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .crack-lines,
+  .hound-rise {
+    animation: none;
+  }
+
+  .cta,
+  .cta-wrap {
+    transition: none;
+  }
+}
