@@ -116,8 +116,11 @@ export async function getAnnouncements(): Promise<Post[]> {
 
 export async function getOpenSeats(): Promise<Seat[]> {
   if (isMock()) return fixtures.seats;
+  // No channel configured is a choice, not a sync failure, so it must not block refreshes
+  const channel = process.env.DISCORD_RECRUITMENT_CHANNEL_ID;
+  if (!channel) return [];
   const { items } = await request<{ items: { message: DiscordMessage }[] }>(
-    `/channels/${env('DISCORD_RECRUITMENT_CHANNEL_ID')}/messages/pins`,
+    `/channels/${channel}/messages/pins`,
   );
   const [latest] = items
     .map(({ message }) => message)

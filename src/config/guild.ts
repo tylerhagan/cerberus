@@ -1,10 +1,10 @@
 export const guild = {
   name: 'Cerberus',
   game: 'WoW: Forever',
-  server: '[SERVER]', // owner fills in
-  faction: '[FACTION]', // owner fills in
+  server: 'Normal', // realm ruleset until a realm is named at launch
+  faction: 'Alliance',
   lead: 'Three heads, one pull. A raiding guild that clears on schedule and keeps the hall loud the rest of the week.',
-  progression: { tier: '[TIER]', cleared: 0, total: 0 }, // shown only when total > 0
+  progression: { tier: '', cleared: 0, total: 0 }, // shown only when total > 0
   raidNights: [
     // static fallback when Discord has no events
     { label: 'Main raid', day: '[Day]', time: '[20:00 to 23:00 CET]' },
@@ -12,7 +12,7 @@ export const guild = {
     { label: 'Alt / social', day: '[Day]', time: 'Optional' },
   ],
   links: {
-    logs: 'https://www.warcraftlogs.com/', // owner replaces with guild page
+    logs: 'https://www.warcraftlogs.com/guild/id/764879', // retail guild until WoW: Forever logs exist
   },
 };
 
